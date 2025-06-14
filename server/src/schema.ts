@@ -140,7 +140,9 @@ export type GetProductInput = z.infer<typeof getProductInputSchema>;
 export const getProductsInputSchema = z.object({
   category: z.string().optional(),
   limit: z.number().int().positive().optional(),
-  offset: z.number().int().nonnegative().optional()
+  offset: z.number().int().nonnegative().optional(),
+  min_price: z.number().optional(),
+  max_price: z.number().optional()
 });
 
 export type GetProductsInput = z.infer<typeof getProductsInputSchema>;

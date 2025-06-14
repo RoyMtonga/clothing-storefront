@@ -24,6 +24,7 @@ import { addToCart } from './handlers/add_to_cart';
 import { getCart } from './handlers/get_cart';
 import { updateCartItem } from './handlers/update_cart_item';
 import { removeFromCart } from './handlers/remove_from_cart';
+import { seedProducts } from './handlers/seed_products';
 
 const t = initTRPC.create({
   transformer: superjson,
@@ -70,6 +71,10 @@ const appRouter = router({
   removeFromCart: publicProcedure
     .input(removeFromCartInputSchema)
     .mutation(({ input }) => removeFromCart(input)),
+
+  // Data seeding
+  seedProducts: publicProcedure
+    .mutation(() => seedProducts()),
 });
 
 export type AppRouter = typeof appRouter;
